@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+  # Flask application service
+  flask-app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"  # Map host port 8000 to container port 8000
+    depends_on:
+      - mysql-db  # Ensure MySQL container is started before Flask app
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=mysql://root:pw@mysql-db/weather-forecast-service # DB credentials would come from a secret in prod
+      - TOMORROW_API_KEY=6xFRsWLYu93GGHGEeDMr8QwI5WU2X0RC # For production system this would come from a secret
+      - TOMORROW_API_BASE_URL=https://api.tomorrow.io/v4
+
+
+  # MySQL database service
+  mysql-db:
+    image: mysql:latest
+    ports:
+      - "3305:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=pw # obviously this is just for local dev
+      - MYSQL_DATABASE=weather-forecast-service
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql # seed database with necessary data
+      - mysql-data:/var/lib/mysql  # Persist MySQL data
+
+
+volumes:
+  mysql-data:
