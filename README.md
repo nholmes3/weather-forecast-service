@@ -19,6 +19,8 @@ docker compose up --build
 This project includes a jupyter notebook that can be used to visualize different weather metrics for the geolocations
 ```bash
 cd weather-forecast-service/notebook
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements-notebook.txt
 jupyter notebook
 ```
