@@ -39,17 +39,6 @@ Retrieves all geolocations stored in the system.
 curl http://localhost:8000/geolocations
 ```
 
-### 1. Get Geolocations
-
-Retrieves all geolocations stored in the system.
-
-**Endpoint:** `GET /geolocations`
-
-**cURL Command:**
-```bash
-curl http://localhost:8000/geolocations
-```
-
 ### 2. Get Hourly Weather Forecast
 
 Retrieves hourly timeseries weather forecast data for a specific location and metric.
