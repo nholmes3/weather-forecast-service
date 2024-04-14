@@ -108,6 +108,9 @@ I chose to use Flask-APScheduler to runs tasks within the same flask process bec
 
 If the task required more resources, we could break out and use a more advanced distributed task queue framework like Celery. Or simply define scheduled serverless processes in the cloud to handle our needs
 
+### Code Organization
+I chose to break up my code based on functionality. I put all models in models.py, all tasks in tasks.py etc. However, as the project scales we would probably break code out into more packages to create more organization of functionality
+
 # Areas of Improvement
 ### MultiProcessing
 During the data load, I tried to create a pool so that we could get forecast data for geolocations in parallel, but I got rate limited by the API while doing this. However, I just wanted to point out that this was possible and should improve overall performance for the data load job
