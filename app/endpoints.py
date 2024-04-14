@@ -57,14 +57,18 @@ def get_recent_metric_for_location():
 @endpoints_bp.route('/metrics')
 def get_available_metrics():
     result = weather_service.get_available_metrics()
-    return result
+    return jsonify(result)
 
 
-# provides a way to manually trigger the scrape
-@endpoints_bp.route('/load')
-def get_available_metrics():
-    weather_service.load_hourly_forecast_data()
-    return Response(status=204)
+# provides a way to manually trigger the scrape during development
+@endpoints_bp.route('/load', methods=['POST'])
+def load_weather_data():
+    if request.method == 'POST':
+        weather_service.load_hourly_forecast_data()
+        weather_service.cleanup_stale_records()
+        return Response(status=204)
+    else:
+        return Response(status=405)  # Method Not Allowed
 
 
 def validate_lat_lon(latitude_str: str, longitude_str: str):

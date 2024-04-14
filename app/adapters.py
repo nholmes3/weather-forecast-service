@@ -22,21 +22,21 @@ class TomorrowAdapter:
             'apikey': self.api_key
         }
 
-        # TODO: using mock response for testing so don't hit rate limit
-        with open('/opt/app/app/response.json', 'r') as file:
-            # Read the contents of the file
-            json_data = file.read()
+        # using mock response for testing so don't hit rate limit
+        # with open('/opt/app/app/response.json', 'r') as file:
+        #     # Read the contents of the file
+        #     json_data = file.read()
+        #
+        #     # Parse the JSON data into a Python object
+        #     data = json.loads(json_data)
+        # return data.get('timelines', {}).get('hourly', [])
 
-            # Parse the JSON data into a Python object
-            data = json.loads(json_data)
-        return data.get('timelines', {}).get('hourly', [])
-
-        # TODO: uncomment real code when finished
-        # response = requests.get(url, params=params)
-        # logging.debug(f'Weather Forecast: {response}')
-        # if response.status_code == 200:
-        #     data = response.json()
-        #     return data.get('timelines', {}).get('hourly', [])
-        # else:
-        #     # Handle error
-        #     return None
+        # uncomment real code when finished testing
+        response = requests.get(url, params=params)
+        logging.debug(f'Weather Forecast: {response}')
+        if response.status_code == 200:
+            data = response.json()
+            return data.get('timelines', {}).get('hourly', [])
+        else:
+            # Handle error
+            return None

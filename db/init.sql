@@ -1,8 +1,9 @@
 -- Create GEO_LOCATION table
 CREATE TABLE IF NOT EXISTS GEO_LOCATION (
-    id INT AUTO_INCREMENT PRIMARY KEY,
     latitude DECIMAL(10,4) NOT NULL,
     longitude DECIMAL(10,4) NOT NULL,
+
+    PRIMARY KEY (latitude, longitude),
 
     INDEX idx_lat_lon (latitude, longitude)
 );

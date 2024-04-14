@@ -5,9 +5,8 @@ from app import db
 
 class GeoLocation(db.Model):
     __tablename__ = 'GEO_LOCATION'
-    id = db.Column(db.Integer, primary_key=True)
-    latitude = db.Column(Numeric(precision=10, scale=4), nullable=False)
-    longitude = db.Column(Numeric(precision=10, scale=4), nullable=False)
+    latitude = db.Column(Numeric(precision=10, scale=4), nullable=False, primary_key=True)
+    longitude = db.Column(Numeric(precision=10, scale=4), nullable=False, primary_key=True)
 
     def __repr__(self):
         return f'<GeoLocation {self.latitude}, {self.longitude}>'

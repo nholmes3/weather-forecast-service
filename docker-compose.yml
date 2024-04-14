@@ -6,6 +6,7 @@ services:
   flask-app:
     build:
       context: .
+    command: ["sh", "-c", "sleep 10 && python run.py"] # hack to ensure mysql is ready for connections. Didn't want to spend more time configuring advanced wait-for functionality
     ports:
       - "8000:8000"  # Map host port 8000 to container port 8000
     depends_on:
