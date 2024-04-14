@@ -97,7 +97,7 @@ curl -X POST http://localhost:8000/load
 
 # Tech Stack
 ### Application Layer
-I chose to use Flask as my python framework as this project is very lightweight and mimics a PoC. I didn't want to get bogged down in additional weight and complexity that comes with Django for such a simple project. 
+I chose to use Flask as my python framework as this project is very lightweight. I didn't want to get bogged down in additional weight and complexity that comes with Django for such a simple project. 
 Django might be more suitable for a larger scale, production ready application
 
 ### Data Layer
