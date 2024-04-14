@@ -112,6 +112,12 @@ If the task required more resources, we could break out and use a more advanced 
 I chose to break up my code based on functionality. I put all models in models.py, all tasks in tasks.py etc. However, as the project scales we would probably break code out into more packages to create more organization of functionality
 
 # Areas of Improvement
+### Testing
+I did not get a chance to write tests for this project, but of course this would be a crucial aspect of deploying new application code.
+I find that Test Driven Development can absolutely be helpful, but is not always the fastest way to start punching out a PoC. Due to time constraints, I decided 
+to focus my efforts on providing the required functionality instead of spending cycles writing tests. Before this code would be deployed into a more stable environment, 
+I would expect there to be test cases for all critical/core functionality
+
 ### MultiProcessing
 During the data load, I tried to create a pool so that we could get forecast data for geolocations in parallel, but I got rate limited by the API while doing this. However, I just wanted to point out that this was possible and should improve overall performance for the data load job
 
